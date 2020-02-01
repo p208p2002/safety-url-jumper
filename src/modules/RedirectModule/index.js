@@ -16,7 +16,6 @@ export class App extends React.Component {
     this.state = {
       urlPass: undefined
     }
-    this.loadingMask = this.loadingMask.bind(this)
   }
   componentDidMount() {
     console.log(targetUrl)
@@ -49,9 +48,11 @@ export class App extends React.Component {
         }
         else {
           console.log('url unsafe')
-          this.setState({
-            urlPass: false
-          })
+          setTimeout(() => {
+            this.setState({
+              urlPass: false
+            })
+          }, 3000)
         }
       })
       .catch((res) => {
@@ -68,8 +69,48 @@ export class App extends React.Component {
         <svg className="spinner" width="40px" height="40px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
           <circle className="path" fill="none" strokeWidth="6" strokeLinecap="round" cx="33" cy="33" r="30"></circle>
         </svg>
-        <br/>
+        <br />
         <span>checking...</span>
+      </div>
+    )
+  }
+
+  safeLink() {
+    return (
+      <div
+        style={{
+          cursor:'pointer'
+        }}
+        className="alert alert-success"
+        role="alert"
+        onClick={() => {
+          window.open(targetUrl);
+        }}
+      >
+        <h5 className="alert-heading">安全的網址</h5>
+        <p>您準備前往的網址是安全的，請點<b>擊橫幅前往</b></p>
+        <hr />
+        <p className="mb-0">由 Google Safe Browsing 提供的安全報告</p>
+      </div>
+    )
+  }
+
+  unsafeLink() {
+    return (
+      <div
+        style={{
+          cursor:'pointer'
+        }}
+        className="alert alert-danger"
+        role="alert"
+        onClick={() => {
+          window.open(targetUrl);
+        }}
+      >
+        <h5 className="alert-heading">不安全的網址</h5>
+        <p>您準備前往的網址可能具有風險，如欲請自行複製網址前往</p>
+        <hr />
+        <p className="mb-0">由 Google Safe Browsing 提供的安全報告</p>
       </div>
     )
   }
@@ -77,24 +118,26 @@ export class App extends React.Component {
   render() {
     let { urlPass } = this.state
     return (
-      <div id="Redirect" className="container text-center">
-        <div className="f-block">
-          <h3>Jumper</h3>
-        </div>
+      <div id="Redirect" className="container text-center">        
         <div className="f-block">
           <Ads />
         </div>
         <div className="f-block">
-          <span>您正在前往</span><br />
+          <h4>URL Jumper</h4>
+          <span>您正在準備前往</span><br />
           <pre>{targetUrl}</pre>
-          <small>URL Checking by Google Safe Browsing</small>
-          <br />
+          {/* <small className="hint-text">URL Checking by Google Safe Browsing</small> */}
           <br />
           <small>{urlPass === undefined ? <this.loadingMask /> :
-            urlPass === true ? <button>前往連結</button> : <button>失敗</button>
+            urlPass === true ? <div>             
+              <this.safeLink />
+            </div> : <this.unsafeLink/>
           }</small>
-          <br />          
+          <br />
         </div>
+        <div className="f-block">
+          <Ads />
+        </div>        
       </div>
     )
   }

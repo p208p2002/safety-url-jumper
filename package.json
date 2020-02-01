@@ -9,12 +9,13 @@
     "axios": "^0.19.2",
     "query-string": "^6.10.1",
     "react": "^16.12.0",
+    "react-adsense": "^0.1.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build&&rm -rf server/build&&cp -r build server/build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
