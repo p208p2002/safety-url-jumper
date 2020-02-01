@@ -44,7 +44,7 @@ export class App extends React.Component {
             this.setState({
               urlPass: true
             })
-          }, 6000)
+          }, 5000)
         }
         else {
           console.log('url unsafe')
@@ -70,7 +70,9 @@ export class App extends React.Component {
           <circle className="path" fill="none" strokeWidth="6" strokeLinecap="round" cx="33" cy="33" r="30"></circle>
         </svg>
         <br />
-        <span>checking...</span>
+        <span>正在確認網址安全性...</span>
+        <br/>
+        <br/>
       </div>
     )
   }
