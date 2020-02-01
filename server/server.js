@@ -1,9 +1,9 @@
 const path = require('path');
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 10000
 // For Static File
-app.use(express.static('public'))
+app.use(express.static('build'))
 // 404 Redirect to App(Front End Route will handle next)
 app.get('*', function(req, res){
     res.sendFile(path.join(__dirname+'/public/index.html'))
