@@ -1,6 +1,8 @@
 import React from 'react';
 import Ads from '../AdsModule'
 import './index.css'
+import unsafeicon from '../../styles/img/001-shield-1.png'
+import safeicon from '../../styles/img/002-shield.png'
 // http://localhost:3000/?goto=aHR0cHM6Ly9lbW4xNzgucGl4bmV0Lm5ldC9ibG9nL3Bvc3QvMTA4Njk0NDE3LSVFNSU5QyVBOGphdmFzY3JpcHQlRTQlQjglQUQlRTQlQkQlQkYlRTclOTQlQThiYXNlNjQtZW5jb2RlLS0tZGVjb2Rl
 // AIzaSyCeKefNghG2Y3xdnL7_naJuH4Sx2mNigXw
 const URL_CHECK_API = 'https://safebrowsing.googleapis.com/v4/threatMatches:find?key=AIzaSyCeKefNghG2Y3xdnL7_naJuH4Sx2mNigXw'
@@ -89,7 +91,8 @@ export class App extends React.Component {
           window.open(targetUrl);
         }}
       >
-        <h5 className="alert-heading">安全的網址</h5>
+        
+        <h5 className="alert-heading"><img src={safeicon} width="28"/> 安全的網址</h5>
         <p>您準備前往的網址是安全的，請點<b>擊橫幅前往</b></p>
         <hr />
         <p className="mb-0">由 Google Safe Browsing 提供的安全報告</p>
@@ -106,7 +109,7 @@ export class App extends React.Component {
         className="alert alert-danger"
         role="alert"
       >
-        <h5 className="alert-heading">不安全的網址</h5>
+        <h5 className="alert-heading"><img src={unsafeicon} width="28"/> 不安全的網址</h5>
         <p>您準備前往的網址可能具有風險，如欲請自行複製網址前往</p>
         <hr />
         <p className="mb-0">由 Google Safe Browsing 提供的安全報告</p>
