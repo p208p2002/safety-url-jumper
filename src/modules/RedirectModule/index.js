@@ -110,7 +110,7 @@ export class App extends React.Component {
         role="alert"
       >
         <h5 className="alert-heading"><img src={unsafeicon} width="28"/> 不安全的網址</h5>
-        <p>您準備前往的網址可能具有風險，如欲請自行複製網址前往</p>
+        <p>您準備前往的網址可能具有風險，如仍欲前往請自行複製網址</p>
         <hr />
         <p className="mb-0">由 Google Safe Browsing 提供的安全報告</p>
       </div>
