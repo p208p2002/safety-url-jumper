@@ -135,7 +135,7 @@ export class App extends React.Component {
           }</small>
           <div className="title-block">
             <span>Safety URL Jumper</span>
-            <br />
+            <span className="tb-break"></span>
             <small>
               <a href="https://github.com/p208p2002/jumper">github.com/p208p2002/jumper</a>
             </small>

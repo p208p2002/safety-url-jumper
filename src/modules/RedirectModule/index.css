@@ -1,6 +1,13 @@
-#Redirect h5{
+#Redirect .title-block span{
     font-size: 12px;
-    font-weight: 600;
+}
+
+#Redirect .title-block small{
+    font-size: 10px;
+}
+
+#Redirect .title-block .tb-break{
+    display: block;
 }
 
 #Redirect{
@@ -21,7 +28,9 @@
     white-space: -pre-wrap;      /* Opera 4-6 */
     white-space: -o-pre-wrap;    /* Opera 7 */
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    margin-top: 5px;
     margin-bottom: 0px;
+    padding: 5px;
 }
 
 #Redirect .hint-text{
