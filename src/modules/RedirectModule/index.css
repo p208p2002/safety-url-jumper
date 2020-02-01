@@ -1,3 +1,8 @@
+#Redirect h5{
+    font-size: 12px;
+    font-weight: 600;
+}
+
 #Redirect{
     display: flex;
     flex-direction: column;

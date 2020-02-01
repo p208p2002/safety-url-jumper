@@ -44,7 +44,7 @@ export class App extends React.Component {
             this.setState({
               urlPass: true
             })
-          }, 3000)
+          }, 6000)
         }
         else {
           console.log('url unsafe')
@@ -79,7 +79,7 @@ export class App extends React.Component {
     return (
       <div
         style={{
-          cursor:'pointer'
+          cursor: 'pointer'
         }}
         className="alert alert-success"
         role="alert"
@@ -99,13 +99,10 @@ export class App extends React.Component {
     return (
       <div
         style={{
-          cursor:'pointer'
+          cursor: 'not-allowed'
         }}
         className="alert alert-danger"
         role="alert"
-        onClick={() => {
-          window.open(targetUrl);
-        }}
       >
         <h5 className="alert-heading">不安全的網址</h5>
         <p>您準備前往的網址可能具有風險，如欲請自行複製網址前往</p>
@@ -118,26 +115,29 @@ export class App extends React.Component {
   render() {
     let { urlPass } = this.state
     return (
-      <div id="Redirect" className="container text-center">        
+      <div id="Redirect" className="container text-center">
         <div className="f-block">
           <Ads />
         </div>
         <div className="f-block">
-          <h4>URL Jumper</h4>
           <span>您正在準備前往</span><br />
+          <br/>
           <pre>{targetUrl}</pre>
           {/* <small className="hint-text">URL Checking by Google Safe Browsing</small> */}
           <br />
           <small>{urlPass === undefined ? <this.loadingMask /> :
-            urlPass === true ? <div>             
+            urlPass === true ? <div>
               <this.safeLink />
-            </div> : <this.unsafeLink/>
+            </div> : <this.unsafeLink />
           }</small>
-          <br />
+          <div className="title-block">
+            <span>Safety URL Jumper</span>
+            <br />
+            <small>
+              <a href="https://github.com/p208p2002/jumper">github.com/p208p2002/jumper</a>
+            </small>
+          </div>
         </div>
-        <div className="f-block">
-          <Ads />
-        </div>        
       </div>
     )
   }

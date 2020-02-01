@@ -7,6 +7,8 @@ function Index() {
             <AdSense.Google
                 client='ca-pub-3857728160074264'
                 slot='2770270783'
+                style={{ display: 'flex'}}
+                responsive='true'
             />
         </div>
     )
