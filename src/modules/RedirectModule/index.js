@@ -140,7 +140,7 @@ export class App extends React.Component {
             <span>Safety URL Jumper</span>
             <span className="tb-break"></span>
             <small>
-              <a href="https://github.com/p208p2002/jumper">github.com/p208p2002/jumper</a>
+              <a href="https://github.com/p208p2002/safety-url-jumper">github.com/p208p2002/safety-url-jumper</a>
             </small>
           </div>
         </div>
