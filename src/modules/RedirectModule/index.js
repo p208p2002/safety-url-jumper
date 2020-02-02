@@ -1,8 +1,9 @@
 import React from 'react';
 import Ads from '../AdsModule'
 import './index.css'
-import unsafeicon from '../../styles/img/001-shield-1.png'
-import safeicon from '../../styles/img/002-shield.png'
+import unsafeicon from '../../assets/img/001-shield-1.png'
+import safeicon from '../../assets/img/002-shield.png'
+import githubicon from '../../assets/img/github-image.png'
 // http://localhost:3000/?goto=aHR0cHM6Ly9lbW4xNzgucGl4bmV0Lm5ldC9ibG9nL3Bvc3QvMTA4Njk0NDE3LSVFNSU5QyVBOGphdmFzY3JpcHQlRTQlQjglQUQlRTQlQkQlQkYlRTclOTQlQThiYXNlNjQtZW5jb2RlLS0tZGVjb2Rl
 // AIzaSyCeKefNghG2Y3xdnL7_naJuH4Sx2mNigXw
 const URL_CHECK_API = 'https://safebrowsing.googleapis.com/v4/threatMatches:find?key=AIzaSyCeKefNghG2Y3xdnL7_naJuH4Sx2mNigXw'
@@ -92,7 +93,7 @@ export class App extends React.Component {
         }}
       >
         
-        <h5 className="alert-heading"><img src={safeicon} width="28"/> 安全的網址</h5>
+        <h5 className="alert-heading"><img src={safeicon} alt="safe" width="28"/> 安全的網址</h5>
         <p>您準備前往的網址是安全的，請點<b>擊橫幅前往</b></p>
         <hr />
         <p className="mb-0">由 Google Safe Browsing 提供的安全報告</p>
@@ -109,7 +110,7 @@ export class App extends React.Component {
         className="alert alert-danger"
         role="alert"
       >
-        <h5 className="alert-heading"><img src={unsafeicon} width="28"/> 不安全的網址</h5>
+        <h5 className="alert-heading"><img src={unsafeicon} width="28" alt="unsafe"/> 不安全的網址</h5>
         <p>您準備前往的網址可能具有風險，如仍欲前往請自行複製網址</p>
         <hr />
         <p className="mb-0">由 Google Safe Browsing 提供的安全報告</p>
@@ -138,9 +139,9 @@ export class App extends React.Component {
           }</small>
           <div className="title-block">
             <span>Safety URL Jumper</span>
-            <span className="tb-break"></span>
-            <small>
-              <a href="https://github.com/p208p2002/safety-url-jumper">github.com/p208p2002/safety-url-jumper</a>
+            <br/>
+            <small style={{position:'relative',display:'block',marginTop:2}}>
+              <a href="https://github.com/p208p2002/safety-url-jumper"><img src={githubicon} width="12" alt="github" /> github.com/p208p2002/safety-url-jumper</a>
             </small>
           </div>
         </div>
