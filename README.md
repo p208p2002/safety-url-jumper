@@ -10,3 +10,4 @@ A redirect service for URL safety and advertising purpose
 
 ## Demo
 [http://jumper.thecodingday.com/?goto=aHR0cHM6Ly9naXRodWIuY29tL3AyMDhwMjAwMi9zYWZldHktdXJsLWp1bXBlcg](http://jumper.thecodingday.com/?goto=aHR0cHM6Ly9naXRodWIuY29tL3AyMDhwMjAwMi9zYWZldHktdXJsLWp1bXBlcg)
+> redirect to https://github.com/p208p2002/safety-url-jumper
