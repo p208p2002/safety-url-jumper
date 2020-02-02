@@ -125,7 +125,7 @@ export class App extends React.Component {
           <Ads />
         </div>
         <div className="f-block">
-          <span>您正在準備前往</span>
+          <span style={{marginTop:5}}>您正在準備前往</span>
           <br/>
           <pre>{targetUrl}</pre>
           {/* <small className="hint-text">URL Checking by Google Safe Browsing</small> */}
