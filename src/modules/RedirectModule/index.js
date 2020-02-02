@@ -125,7 +125,6 @@ export class App extends React.Component {
           <Ads />
         </div>
         <div className="f-block">
-          <br/>
           <span>您正在準備前往</span>
           <br/>
           <pre>{targetUrl}</pre>
