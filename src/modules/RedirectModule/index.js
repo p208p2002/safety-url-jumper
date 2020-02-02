@@ -46,7 +46,7 @@ export class App extends React.Component {
             this.setState({
               urlPass: true
             })
-          }, 5000)
+          }, 3000)
         }
         else {
           console.log('url unsafe')
