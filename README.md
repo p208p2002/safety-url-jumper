@@ -3,6 +3,7 @@ A redirect service for URL safety and advertising purpose
 
 ## Feature
 - URL security checking
+> using [Google Safe Browsing API](https://developers.google.com/safe-browsing)
 - WEB ADs embedding
 
 ## Usage
