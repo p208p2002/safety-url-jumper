@@ -21,6 +21,7 @@ export class App extends React.Component {
       urlText: ''
     }
     this.urlInput = React.createRef()
+    this.makeUrl = this.makeUrl.bind(this)
   }
   componentDidMount() {
     console.log(targetUrl)
@@ -66,6 +67,19 @@ export class App extends React.Component {
           urlPass: false
         })
       })
+  }
+
+  makeUrl() {
+    var protocol = window.location.protocol;
+    var slashes = protocol.concat("//");
+    var host = slashes.concat(window.location.hostname);
+    this.setState({
+      urlText: host + '?goto=' + btoa(this.state.urlText)
+    })
+    setTimeout(() => {
+      this.urlInput.select();
+      document.execCommand('copy');
+    }, 0)
   }
 
   loadingMask() {
@@ -130,7 +144,7 @@ export class App extends React.Component {
         {targetUrl === '' ?
           <div className="f-block">
             <h3>Safety URL Jumper</h3>
-            <form className="form">
+            <div className="form">
               <div className="form-group text-center">
                 <label className="sr-only">Password</label>
                 <input
@@ -139,6 +153,11 @@ export class App extends React.Component {
                   className="form-control"
                   placeholder="Paste link here..."
                   value={this.state.urlText}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      this.makeUrl()
+                    }
+                  }}
                   onChange={(e) => {
                     this.setState({
                       urlText: e.target.value
@@ -149,20 +168,9 @@ export class App extends React.Component {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={() => {
-                  var protocol = window.location.protocol;
-                  var slashes = protocol.concat("//");
-                  var host = slashes.concat(window.location.hostname);
-                  this.setState({
-                    urlText: host + '?goto=' + btoa(this.state.urlText)
-                  })
-                  setTimeout(() => {
-                    this.urlInput.select();
-                    document.execCommand('copy');
-                  }, 0)
-                }}
+                onClick={this.makeUrl}
               >Make Link and Copy</button>
-            </form>
+            </div>
           </div>
           : <div className="f-block">
             <br />
