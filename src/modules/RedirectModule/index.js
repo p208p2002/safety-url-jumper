@@ -17,8 +17,10 @@ export class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      urlPass: undefined
+      urlPass: undefined,
+      urlText: ''
     }
+    this.urlInput = React.createRef()
   }
   componentDidMount() {
     console.log(targetUrl)
@@ -47,7 +49,7 @@ export class App extends React.Component {
             this.setState({
               urlPass: true
             })
-          }, 3000)
+          }, 0)
         }
         else {
           console.log('url unsafe')
@@ -55,7 +57,7 @@ export class App extends React.Component {
             this.setState({
               urlPass: false
             })
-          }, 3000)
+          }, 0)
         }
       })
       .catch((res) => {
@@ -74,8 +76,8 @@ export class App extends React.Component {
         </svg>
         <br />
         <span>正在確認網址安全性...</span>
-        <br/>
-        <br/>
+        <br />
+        <br />
       </div>
     )
   }
@@ -92,8 +94,8 @@ export class App extends React.Component {
           window.open(targetUrl);
         }}
       >
-        
-        <h5 className="alert-heading"><img src={safeicon} alt="safe" width="28"/> 安全的網址</h5>
+
+        <h5 className="alert-heading"><img src={safeicon} alt="safe" width="28" /> 安全的網址</h5>
         <p>您準備前往的網址是安全的，請點<b>擊橫幅前往</b></p>
         <hr />
         <p className="mb-0">由 Google Safe Browsing 提供的安全報告</p>
@@ -110,7 +112,7 @@ export class App extends React.Component {
         className="alert alert-danger"
         role="alert"
       >
-        <h5 className="alert-heading"><img src={unsafeicon} width="28" alt="unsafe"/> 不安全的網址</h5>
+        <h5 className="alert-heading"><img src={unsafeicon} width="28" alt="unsafe" /> 不安全的網址</h5>
         <p>您準備前往的網址可能具有風險，如仍欲前往請自行複製網址</p>
         <hr />
         <p className="mb-0">由 Google Safe Browsing 提供的安全報告</p>
@@ -125,26 +127,63 @@ export class App extends React.Component {
         <div className="f-block">
           <Ads />
         </div>
-        <div className="f-block">
-          <br/>
-          <span>您正在準備前往</span>
-          <br/>
-          <pre>{targetUrl}</pre>
-          {/* <small className="hint-text">URL Checking by Google Safe Browsing</small> */}
-          <br />
-          <small>{urlPass === undefined ? <this.loadingMask /> :
-            urlPass === true ? <div>
-              <this.safeLink />
-            </div> : <this.unsafeLink />
-          }</small>
-          <div className="title-block">
-            <span>Safety URL Jumper</span>
-            <br/>
-            <small style={{position:'relative',display:'block',marginTop:2}}>
-              <a href="https://github.com/p208p2002/safety-url-jumper"><img src={githubicon} width="12" alt="github" /> github.com/p208p2002/safety-url-jumper</a>
-            </small>
+        {targetUrl === '' ?
+          <div className="f-block">
+            <h3>Safety URL Jumper</h3>
+            <form className="form">
+              <div className="form-group text-center">
+                <label className="sr-only">Password</label>
+                <input
+                  ref={(ref) => this.urlInput = ref}
+                  type="text"
+                  className="form-control"
+                  placeholder="Paste link here..."
+                  value={this.state.urlText}
+                  onChange={(e) => {
+                    this.setState({
+                      urlText: e.target.value
+                    })
+                  }}
+                />
+              </div>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => {
+                  var protocol = window.location.protocol;
+                  var slashes = protocol.concat("//");
+                  var host = slashes.concat(window.location.hostname);
+                  this.setState({
+                    urlText: host + '?goto=' + btoa(this.state.urlText)
+                  })
+                  setTimeout(() => {
+                    this.urlInput.select();
+                    document.execCommand('copy');
+                  }, 0)
+                }}
+              >Make Link and Copy</button>
+            </form>
           </div>
-        </div>
+          : <div className="f-block">
+            <br />
+            <span>您正在準備前往</span>
+            <br />
+            <pre>{targetUrl}</pre>
+            {/* <small className="hint-text">URL Checking by Google Safe Browsing</small> */}
+            <br />
+            <div>{urlPass === undefined ? <this.loadingMask /> :
+              urlPass === true ? <div>
+                <this.safeLink />
+              </div> : <this.unsafeLink />
+            }</div>
+            <div className="title-block">
+              <span>Safety URL Jumper</span>
+              <br />
+              <small style={{ position: 'relative', display: 'block', marginTop: 2 }}>
+                <a href="https://github.com/p208p2002/safety-url-jumper"><img src={githubicon} width="12" alt="github" /> github.com/p208p2002/safety-url-jumper</a>
+              </small>
+            </div>
+          </div>}
       </div>
     )
   }
