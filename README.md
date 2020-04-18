@@ -10,5 +10,5 @@ A redirect service for URL safety and advertising purpose
 `goto`: encode redirect url with base64
 
 ## Demo
-[http://ref.thecodingday.com/?goto=aHR0cHM6Ly9naXRodWIuY29tL3AyMDhwMjAwMi9zYWZldHktdXJsLWp1bXBlcg](http://ref.thecodingday.com/?goto=aHR0cHM6Ly9naXRodWIuY29tL3AyMDhwMjAwMi9zYWZldHktdXJsLWp1bXBlcg)
+[https://ref.thecodingday.com/?goto=aHR0cHM6Ly9naXRodWIuY29tL3AyMDhwMjAwMi9zYWZldHktdXJsLWp1bXBlcg](http://ref.thecodingday.com/?goto=aHR0cHM6Ly9naXRodWIuY29tL3AyMDhwMjAwMi9zYWZldHktdXJsLWp1bXBlcg)
 > redirect to `https://github.com/p208p2002/safety-url-jumper`
