@@ -1,4 +1,4 @@
-# Safety URL Jumper
+# Safety URL Jumper ![Build and Deploy](https://github.com/p208p2002/safety-url-jumper/workflows/Build%20and%20Deploy/badge.svg)
 A redirect service for URL safety and advertising purpose
 
 ## Feature
