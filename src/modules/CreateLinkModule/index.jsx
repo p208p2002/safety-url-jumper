@@ -37,7 +37,7 @@ export class index extends Component {
                     <div className="col">
                         <ADs height="250px"/>
                     </div>
-                    <div className="col">
+                    <div className="col d-none d-lg-block">
                         <ADs height="250px"/>
                     </div>
                 </div>
