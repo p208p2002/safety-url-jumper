@@ -21,8 +21,8 @@ export class App extends React.Component {
       urlText: ''
     }
     this.urlInput = React.createRef()
-    this.makeUrl = this.makeUrl.bind(this)
   }
+
   componentDidMount() {
     console.log(targetUrl)
     axios.post(URL_CHECK_API,
@@ -67,19 +67,6 @@ export class App extends React.Component {
           urlPass: false
         })
       })
-  }
-
-  makeUrl() {
-    var protocol = window.location.protocol;
-    var slashes = protocol.concat("//");
-    var host = slashes.concat(window.location.hostname);
-    this.setState({
-      urlText: host + '?goto=' + btoa(this.state.urlText)
-    })
-    setTimeout(() => {
-      this.urlInput.select();
-      document.execCommand('copy');
-    }, 0)
   }
 
   loadingMask() {
@@ -141,57 +128,26 @@ export class App extends React.Component {
         <div className="f-block">
           <Ads />
         </div>
-        {targetUrl === '' ?
-          <div className="f-block">
-            <h3>Safety URL Jumper</h3>
-            <div className="form">
-              <div className="form-group text-center">
-                <label className="sr-only">Password</label>
-                <input
-                  ref={(ref) => this.urlInput = ref}
-                  type="text"
-                  className="form-control"
-                  placeholder="Paste link here..."
-                  value={this.state.urlText}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      this.makeUrl()
-                    }
-                  }}
-                  onChange={(e) => {
-                    this.setState({
-                      urlText: e.target.value
-                    })
-                  }}
-                />
-              </div>
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={this.makeUrl}
-              >Make Link and Copy</button>
-            </div>
+        <div className="f-block">
+          <br />
+          <span>您正在準備前往</span>
+          <br />
+          <pre>{targetUrl}</pre>
+          {/* <small className="hint-text">URL Checking by Google Safe Browsing</small> */}
+          <br />
+          <div>{urlPass === undefined ? <this.loadingMask /> :
+            urlPass === true ? <div>
+              <this.safeLink />
+            </div> : <this.unsafeLink />
+          }</div>
+          <div className="title-block">
+            <span>Safety URL Jumper</span>
+            <br />
+            <small style={{ position: 'relative', display: 'block', marginTop: 2 }}>
+              <a href="https://github.com/p208p2002/safety-url-jumper"><img src={githubicon} width="12" alt="github" /> github.com/p208p2002/safety-url-jumper</a>
+            </small>
           </div>
-          : <div className="f-block">
-            <br />
-            <span>您正在準備前往</span>
-            <br />
-            <pre>{targetUrl}</pre>
-            {/* <small className="hint-text">URL Checking by Google Safe Browsing</small> */}
-            <br />
-            <div>{urlPass === undefined ? <this.loadingMask /> :
-              urlPass === true ? <div>
-                <this.safeLink />
-              </div> : <this.unsafeLink />
-            }</div>
-            <div className="title-block">
-              <span>Safety URL Jumper</span>
-              <br />
-              <small style={{ position: 'relative', display: 'block', marginTop: 2 }}>
-                <a href="https://github.com/p208p2002/safety-url-jumper"><img src={githubicon} width="12" alt="github" /> github.com/p208p2002/safety-url-jumper</a>
-              </small>
-            </div>
-          </div>}
+        </div>
       </div>
     )
   }
