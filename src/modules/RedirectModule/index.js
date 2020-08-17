@@ -1,9 +1,12 @@
 import React from 'react';
 import Ads from '../AdsModule'
+import Header from '../../components/header'
+import Footer from '../../components/footer'
+import AboutSafeBrowsing from '../../components/aboutSafeBrowsing'
 import './index.css'
 import unsafeicon from '../../assets/img/001-shield-1.png'
 import safeicon from '../../assets/img/002-shield.png'
-import githubicon from '../../assets/img/github-image.png'
+// import githubicon from '../../assets/img/github-image.png'
 // http://localhost:3000/?goto=aHR0cHM6Ly9lbW4xNzgucGl4bmV0Lm5ldC9ibG9nL3Bvc3QvMTA4Njk0NDE3LSVFNSU5QyVBOGphdmFzY3JpcHQlRTQlQjglQUQlRTQlQkQlQkYlRTclOTQlQThiYXNlNjQtZW5jb2RlLS0tZGVjb2Rl
 // AIzaSyCeKefNghG2Y3xdnL7_naJuH4Sx2mNigXw
 const URL_CHECK_API = 'https://safebrowsing.googleapis.com/v4/threatMatches:find?key=AIzaSyCeKefNghG2Y3xdnL7_naJuH4Sx2mNigXw'
@@ -125,11 +128,19 @@ export class App extends React.Component {
     let { urlPass } = this.state
     return (
       <div id="Redirect" className="container text-center">
-        <div className="f-block">
-          <Ads />
+        <Header/>
+        <div className="f-block mt-3 mb-3">
+          <div className="row">
+            <div className="col">
+              <Ads height="250px" />
+            </div>
+            <div className="col d-none d-lg-block">
+              <Ads height="250px" />
+            </div>
+          </div>
         </div>
-        <div className="f-block">
-          <br />
+        <AboutSafeBrowsing/>
+        <div className="f-block mt-3">
           <span>您正在準備前往</span>
           <br />
           <pre>{targetUrl}</pre>
@@ -140,14 +151,9 @@ export class App extends React.Component {
               <this.safeLink />
             </div> : <this.unsafeLink />
           }</div>
-          <div className="title-block">
-            <span>Safety URL Jumper</span>
-            <br />
-            <small style={{ position: 'relative', display: 'block', marginTop: 2 }}>
-              <a href="https://github.com/p208p2002/safety-url-jumper"><img src={githubicon} width="12" alt="github" /> github.com/p208p2002/safety-url-jumper</a>
-            </small>
-          </div>
+         
         </div>
+        <Footer/>
       </div>
     )
   }

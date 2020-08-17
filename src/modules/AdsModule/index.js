@@ -1,16 +1,20 @@
 import React from 'react';
-import './index.css'
 import AdSense from 'react-adsense';
-function Index() {
+import styled from 'styled-components'
+const ADS  = styled.div`
+    background-color:rgb(248,248,248);
+`
+function Index(props) {
     return (
-        <div id="ADS">
+        <ADS>
             <AdSense.Google
                 client='ca-pub-3857728160074264'
                 slot='2770270783'
-                style={{ display: 'flex'}}
+                style={{ display: 'block',height:props.height?props.height:'auto' }}
+                format={props.height?'':'auto'}
                 responsive='true'
             />
-        </div>
+        </ADS>
     )
 }
 
